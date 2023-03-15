@@ -23,7 +23,7 @@ public class GameStoreTest {
         Game game3 = store.publishGame("God of war", "action");
 
         //assertTrue(store.containsGame(game1));
-        //assertTrue(store.containsGame(game2));
+       // assertTrue(store.containsGame(game2));
         assertTrue(store.containsGame(game3));
     }
     // другие ваши тесты
