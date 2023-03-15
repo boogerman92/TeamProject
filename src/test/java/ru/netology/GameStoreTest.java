@@ -9,10 +9,28 @@ public class GameStoreTest {
     public void shouldAddGame() {
 
         GameStore store = new GameStore();
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-        assertTrue(store.containsGame(game));
+
+        assertTrue(store.containsGame(game1));
     }
 
-    // другие ваши тесты
+    @Test
+    public void shouldAddsGame() {
+
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Warcraft", "Strategy");
+        Game game3 = store.publishGame("God of war", "action");
+
+        //assertTrue(store.containsGame(game1));
+        //assertTrue(store.containsGame(game2));
+        assertTrue(store.containsGame(game3));
+    }
+
+
+
+
+
+        // другие ваши тесты
 }
