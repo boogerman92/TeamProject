@@ -33,7 +33,7 @@ public class Player {
     public int play(Game game, int hours) {
         game.getStore().addPlayTime(name, hours);
         if (playedTime.containsKey(game)) {
-            playedTime.put(game, playedTime.get(game));
+            playedTime.put(game, playedTime.get(game) + hours); // сделал добавление часа, тест проходит
         } else {
             playedTime.put(game, hours);
         }
@@ -44,14 +44,14 @@ public class Player {
      суммирует время, проигранное во все игры этого жанра этим игроком */
     public int sumGenre(String genre) {
         int sum = 0;
+        boolean hasGenre = false;
         for (Game game : playedTime.keySet()) {
-            if (game.getGenre().equals(genre)) {
+            if (game.getGenre().equals(genre)){
                 sum += playedTime.get(game);
-            } else {
-                sum = 0;
+                hasGenre = true;
             }
         }
-        return sum;
+        return hasGenre ? sum : 0;
     }
 
     /** Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
