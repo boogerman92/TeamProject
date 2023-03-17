@@ -44,13 +44,30 @@ public class GameStoreTest {
     void testAddPlayTime() {
 
         GameStore store = new GameStore();
-        Player player = new Player("Petya");
+        Player player1 = new Player("Petya");
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        player.installGame(game1);
+        player1.installGame(game1);
 
         store.addPlayTime("Petya", 2);
         store.addPlayTime("Petya", 4);
         assertEquals(6, store.getSumPlayedTime());
+    }
+
+    @Test
+    void testMostTimePlayerPlayTime() {
+
+        GameStore store = new GameStore();
+        Player player1 = new Player("Petya");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        player1.installGame(game1);
+        Player player2 = new Player("Alla");
+        player2.installGame(game1);
+
+        store.addPlayTime("Petya", 0);
+        //store.addPlayTime("Petya", 4);
+        store.addPlayTime("Alla", 1);
+
+        assertEquals("Alla", store.getMostPlayer());
     }
     // другие ваши тесты
 }
