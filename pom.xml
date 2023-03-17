@@ -50,6 +50,9 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
