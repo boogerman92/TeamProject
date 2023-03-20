@@ -18,6 +18,59 @@ public class PlayerTest {
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
     }
+    @Test
+    public void testMostPlayedByGenre() {
+        GameStore store = new GameStore();
+        Player player = new Player("Mary");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Тетрис", "3вРяд");
+        Game game3 = store.publishGame("Doom", "Стрелялка");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+        player.play(game1, 10);
+        player.play(game2, 5);
+        player.play(game3, 20);
+        player.play(game1, 5);
+        player.play(game2, 8);
+        player.play(game3, 12);
 
+        assertEquals(game3, player.mostPlayerByGenre("Стрелялка"));
+    }
+
+    @Test
+    public void testNullMostPlayedByGenre() {
+        GameStore store = new GameStore();
+        Player player = new Player("Mary");
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Тетрис", "3вРяд");
+        Game game3 = store.publishGame("Doom", "Стрелялка");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+        player.play(game1, 10);
+        player.play(game2, 5);
+        player.play(game3, 20);
+        player.play(game1, 5);
+        player.play(game2, 8);
+        player.play(game3, 12);
+
+        assertEquals(null, player.mostPlayerByGenre("Action"));
+    }
+    @Test
+    public void testShouldGetName() {
+        Player player = new Player("Alex");
+        String expectedName = "Alex";
+        String actualName = player.getName();
+        assertEquals(expectedName, actualName);
+    }
+
+
+    @Test
+    public void testSumGenreNoGames() {
+        Player player = new Player("John");
+        int sum = player.sumGenre("Genre1");
+        assertEquals(0, sum);
+    }
     // другие ваши тесты
 }
