@@ -67,10 +67,10 @@ public class PlayerTest {
 
 
     @Test
-    public void testPlayGameNotInstalled() {
-        Player player = new Player("Alex");
-        Game game = new Game("Game1", "Genre1", new GameStore());
-        player.play(game, 5);
+    public void testSumGenreNoGames() {
+        Player player = new Player("John");
+        int sum = player.sumGenre("Genre1");
+        assertEquals(0, sum);
     }
     // другие ваши тесты
 }
