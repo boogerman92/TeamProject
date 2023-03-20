@@ -57,5 +57,20 @@ public class PlayerTest {
 
         assertEquals(null, player.mostPlayerByGenre("Action"));
     }
+    @Test
+    public void testShouldGetName() {
+        Player player = new Player("Alex");
+        String expectedName = "Alex";
+        String actualName = player.getName();
+        assertEquals(expectedName, actualName);
+    }
+
+
+    @Test
+    public void testPlayGameNotInstalled() {
+        Player player = new Player("Alex");
+        Game game = new Game("Game1", "Genre1", new GameStore());
+        player.play(game, 5);
+    }
     // другие ваши тесты
 }
